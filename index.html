@@ -6,6 +6,7 @@
   <meta name="description" content="配信を経験しながら育っていく、ちょっと変なロボット『よしこ』について。">
   <meta name="color-scheme" content="light">
   <title>よしこについて</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -80,11 +81,27 @@
           <!-- 紹介文は、ここまでです。 -->
         </div>
 
-        <aside class="portrait-column" aria-label="よしこの画像">
-          <div class="portrait-frame">
-            <!-- images/yoshiko.png を置くと、ここに表示されます。 -->
-            <img class="portrait-object" src="images/yoshiko.png" alt="よしこ">
+        <aside class="portrait-column" aria-label="よしこの3Dモデル">
+          <div class="portrait-frame" id="vrm-viewer">
+            <canvas
+              class="vrm-canvas"
+              id="vrm-canvas"
+              aria-label="よしこの3Dモデル。左右にドラッグして回転できます"
+              aria-describedby="vrm-hint"
+            ></canvas>
+            <p class="vrm-status" id="vrm-status" role="status">読み込み中</p>
+            <img
+              class="portrait-object portrait-fallback"
+              id="vrm-fallback"
+              src="images/yoshiko.png"
+              alt="よしこ"
+              hidden
+            >
+            <noscript>
+              <img class="portrait-object" src="images/yoshiko.png" alt="よしこ">
+            </noscript>
           </div>
+          <p class="vrm-hint" id="vrm-hint">左右にドラッグして回転</p>
         </aside>
       </section>
 
@@ -124,5 +141,16 @@
     </main>
 
   </div>
+  <script>
+    window.__yoshikoVrmFallbackTimer = window.setTimeout(function () {
+      var status = document.querySelector('#vrm-status');
+      var canvas = document.querySelector('#vrm-canvas');
+      var fallback = document.querySelector('#vrm-fallback');
+      if (status && !status.hidden) status.textContent = '3Dを読み込めなかったよ';
+      if (canvas) canvas.hidden = true;
+      if (fallback) fallback.hidden = false;
+    }, 10000);
+  </script>
+  <script type="module" src="viewer.js"></script>
 </body>
 </html>

@@ -137,6 +137,52 @@ sup {
 .portrait-frame {
   position: relative;
   min-height: 600px;
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 250, 240, 0.88), rgba(223, 231, 217, 0.52) 62%, rgba(143, 165, 141, 0.12));
+  box-shadow: inset 0 0 0 1px rgba(64, 55, 47, 0.12);
+}
+
+.vrm-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.vrm-canvas.is-dragging {
+  cursor: grabbing;
+}
+
+.vrm-status {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: var(--brown-soft);
+  background: rgba(255, 250, 240, 0.82);
+  font-size: 0.78rem;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.vrm-status[hidden] {
+  display: none;
+}
+
+.vrm-hint {
+  margin: 9px 0 0;
+  color: var(--brown-soft);
+  font-size: 0.76rem;
+  text-align: center;
 }
 
 .portrait-object {
@@ -150,6 +196,10 @@ sup {
   transform: translate(-50%, -50%);
   filter: drop-shadow(0 8px 7px rgba(51, 43, 36, 0.28));
   pointer-events: none;
+}
+
+.portrait-fallback[hidden] {
+  display: none;
 }
 
 .section-divider {
