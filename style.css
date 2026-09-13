@@ -296,9 +296,8 @@ sup {
 }
 
 .details-link {
-  margin-top: 54px;
-  padding: clamp(25px, 4vw, 42px);
-  border-top: 1px solid rgba(64, 55, 47, 0.25);
+  margin-bottom: 54px;
+  padding: 0 clamp(25px, 4vw, 42px);
   text-align: center;
 }
 
@@ -310,7 +309,7 @@ sup {
 
 .details-link a {
   display: inline-block;
-  width: min(100%, 620px);
+  width: min(50%, 620px);
   border-radius: 18px;
   transition: transform 160ms ease, filter 160ms ease;
 }
@@ -330,6 +329,90 @@ sup {
   width: 100%;
   height: auto;
   border-radius: 18px;
+}
+
+.article-shell {
+  width: min(860px, calc(100% - 48px));
+}
+
+.article-header {
+  max-width: none;
+  padding-bottom: 42px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: var(--sage-dark);
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.article-lead {
+  max-width: 720px;
+}
+
+.article-content {
+  display: grid;
+  gap: 0;
+}
+
+.article-section {
+  padding: 34px 6px 36px 2px;
+  border-top: 1px solid rgba(64, 55, 47, 0.25);
+}
+
+.article-section h2 {
+  position: relative;
+  margin: 0 0 14px;
+  padding-left: 23px;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.article-section h2::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 0.58em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--sage-dark);
+}
+
+.article-section p {
+  margin: 0 0 1em;
+}
+
+.article-section p:last-child {
+  margin-bottom: 0;
+}
+
+.article-section .short-lines {
+  color: var(--brown-soft);
+  font-weight: 700;
+}
+
+.experience-flow {
+  margin: 24px 0;
+  padding: 24px 28px;
+  border-radius: 10px;
+  background: rgba(255, 250, 240, 0.52);
+  font-weight: 700;
+  text-align: center;
+}
+
+.experience-flow span {
+  display: block;
+  color: var(--sage-dark);
+  line-height: 1.4;
+}
+
+.article-footer {
+  margin-top: 46px;
+  text-align: center;
 }
 
 @media (max-width: 800px) {
@@ -363,6 +446,10 @@ sup {
 
   .info-grid {
     grid-template-columns: 1fr;
+  }
+
+  .details-link a {
+    width: min(62%, 420px);
   }
 
   .section-divider {
@@ -412,6 +499,26 @@ sup {
 
   .info-block {
     padding: 24px 20px;
+  }
+
+  .details-link {
+    padding-inline: 0;
+  }
+
+  .details-link a {
+    width: min(76%, 330px);
+  }
+
+  .article-shell {
+    width: min(100% - 24px, 560px);
+  }
+
+  .article-section {
+    padding: 27px 4px 29px 0;
+  }
+
+  .experience-flow {
+    padding: 21px 16px;
   }
 
   .email {
